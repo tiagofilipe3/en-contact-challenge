@@ -1,0 +1,41 @@
+{
+  "name": "en-contact-challenge",
+  "version": "1.0.0",
+  "description": "EnContact Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel ./src/index.html --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiagofilipe3/en-contact-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tiagofilipe3/en-contact-challenge/issues"
+  },
+  "homepage": "https://github.com/tiagofilipe3/en-contact-challenge#readme",
+  "dependencies": {
+    "@babel/preset-react": "^7.10.4",
+    "@emotion/core": "^10.0.28",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-emotion": "^10.0.33",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "parcel": "^1.12.4",
+    "prettier": "^2.0.5"
+  }
+}
