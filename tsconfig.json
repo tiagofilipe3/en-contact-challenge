@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "preserve",
     "module": "ES6",
     "moduleResolution": "node",
-    "baseUrl": "src",
-    "allowSyntheticDefaultImports": true
-  }
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "build"]
 }
