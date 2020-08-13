@@ -1,23 +1,24 @@
 import { css } from '@emotion/core';
+import PropTypes from 'prop-types';
 
-interface MarginProps {
-  marginLeft: string,
-  marginTop: string,
-  marginRight: string,
-  marginBottom: string,
-}
-
-export const margins = ({
+const margins = ({
   marginLeft,
   marginTop,
   marginRight,
   marginBottom,
-}: MarginProps) => css`
+}) => css`
   margin-left: ${marginLeft && marginLeft};
   margin-top: ${marginTop && marginTop};
   margin-right: ${marginRight && marginRight};
   margin-bottom: ${marginBottom && marginBottom};
 `;
+
+export const marginPropTypes = {
+  marginLeft: PropTypes.string,
+  marginTop: PropTypes.string,
+  marginRight: PropTypes.string,
+  marginBottom: PropTypes.string,
+};
 
 export const marginsDefaultProps = {
   marginLeft: undefined,

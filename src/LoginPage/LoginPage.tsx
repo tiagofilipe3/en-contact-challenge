@@ -1,12 +1,12 @@
 import React from 'react';
-import { Container, Paper } from '@material-ui/core';
+import Container from '../Container';
 
 const LoginPage = () => (
-  <Container maxWidth="sm" style={{ height: '100%' }}>
-    <Paper elevation={3} style={{ backgroundColor: '#00544F', height: '33%' }}>
-      Login
-    </Paper>
-  </Container>
+  <>
+    <Container>
+      <span>Login</span>
+    </Container>
+  </>
 );
 
 export default LoginPage;

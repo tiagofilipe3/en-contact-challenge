@@ -6,7 +6,7 @@ import LoginPage from '../LoginPage';
 import LoginBG from '../assets/images/bg-sign-up.jpg';
 
 const containerStyles = css({
-  backgroundImage: `url(${LoginBG})`,
+  background: `url(${LoginBG}) no-repeat 50% 50%/cover`,
   height: '100%',
 });
 
