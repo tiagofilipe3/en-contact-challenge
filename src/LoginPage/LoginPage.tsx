@@ -1,4 +1,5 @@
 import React from "react";
+import { TextField } from "@material-ui/core";
 import Container from "../Container";
 
 const loginBoxStyles = {
@@ -11,11 +12,20 @@ const loginBoxStyles = {
   color: "#fff",
 };
 
+const inputStyles = {
+  color: "#fff",
+};
+
 const LoginPage = () => (
-  <Container>
-    <Container wd="28%" css={loginBoxStyles} column alignItems="center">
-      <div>Login</div>
-    </Container>
+  <Container
+    wd="432px"
+    css={loginBoxStyles}
+    column
+    alignItems="center"
+    padding="38px 36px 38px"
+  >
+    <div>Login</div>
+    <TextField id="standard-basic" label="Standard" css={inputStyles} />
   </Container>
 );
 
