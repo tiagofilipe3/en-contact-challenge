@@ -52,3 +52,7 @@ export const paddingsDefaultProps = {
   paddingsRight: undefined,
   paddingsBottom: undefined,
 };
+
+export type MarginProps = {
+
+}

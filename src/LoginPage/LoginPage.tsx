@@ -12,7 +12,7 @@ const loginBoxStyles = {
 };
 
 const LoginPage = () => (
-  <Container alignItems="center" justifyContent="center">
+  <Container>
     <Container wd="28%" css={loginBoxStyles} column alignItems="center">
       <div>Login</div>
     </Container>
