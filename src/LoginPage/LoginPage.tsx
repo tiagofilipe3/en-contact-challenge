@@ -1,8 +1,9 @@
 import React from "react";
-import { TextField } from "@material-ui/core";
-import { css } from "@emotion/core";
+import { Button, TextField } from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Container from "../Container";
+import colors from "../colors";
+import FormattedText from "../FormattedText";
 
 const loginBoxStyles = {
   backgroundColor: "#005450",
@@ -16,22 +17,73 @@ const loginBoxStyles = {
 
 const WhiteTextField = withStyles({
   root: {
-    "& input.MuiInputBase-input": {
+    "& .MuiFormLabel-root": {
+      color: "rgba(255,255,255,0.6)",
+      fontFamily: "Lato-Light",
+    },
+    "& .MuiInputBase-input, & .MuiInputBase-root": {
+      width: "250px",
       color: "#fff",
+      fontFamily: "Lato-Light",
+    },
+    "& .MuiInput-underline": {
+      "&:before": {
+        borderBottom: "1px solid #fff",
+      },
+      "&:hover:before": {
+        borderBottom: "1px solid #fff",
+      },
+      "&:after": {
+        borderBottom: "1px solid #fff",
+      },
     },
   },
 })(TextField);
 
+const ColorButton = withStyles(() => ({
+  root: {
+    width: "180px",
+    borderRadius: "20px",
+    color: colors.primary,
+    backgroundColor: "#fff",
+    "&:hover": {
+      backgroundColor: "#E5E7DA",
+    },
+  },
+}))(Button);
+
 const LoginPage = () => (
   <Container
+    column
     wd="432px"
     css={loginBoxStyles}
-    column
     alignItems="center"
-    padding="38px 36px 38px"
+    padding="38px 0 38px"
   >
-    <div>Login</div>
-    <WhiteTextField id="standard-basic" label="Standard" />
+    <Container>
+      <FormattedText
+        textId="enContact"
+        color="primary-text"
+        fontFamily="Lato-Regular"
+      />
+    </Container>
+    <Container marginTop="20px">
+      <WhiteTextField id="standard-basic" label="Username" />
+    </Container>
+    <Container marginTop="20px">
+      <WhiteTextField id="standard-basic" label="Password" type="password" />
+    </Container>
+    <Container marginTop="50px">
+      <ColorButton>
+        <FormattedText
+          color="primary"
+          fontFamily="Lato-Regular"
+          size="xs"
+          fontWeight="bold"
+          textId="login"
+        />
+      </ColorButton>
+    </Container>
   </Container>
 );
 

@@ -1,6 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import { IntlProvider } from "react-intl";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import App from "./App";
+import ptBR from "./i18n/pt-BR";
+
+ReactDOM.render(
+  <IntlProvider locale="pt-BR" defaultLocale="pt-BR" messages={ptBR}>
+    <App />
+  </IntlProvider>,
+  document.getElementById("root")
+);

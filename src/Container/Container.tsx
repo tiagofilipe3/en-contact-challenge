@@ -2,9 +2,9 @@ import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 
-import { MarginProps, margins } from "./margins";
-import { DimensionsProps, dimensions } from "./dimensions";
-import { PaddingsProps, paddings } from "./paddings";
+import { MarginProps, margins } from "../dimensions/margins";
+import { DimensionsProps, dimensions } from "../dimensions/dimensions";
+import { PaddingsProps, paddings } from "../dimensions/paddings";
 
 interface ContainerProps extends MarginProps, PaddingsProps, DimensionsProps {
   column?: boolean;
