@@ -1,5 +1,7 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
+import { css } from "@emotion/core";
+import withStyles from "@material-ui/core/styles/withStyles";
 import Container from "../Container";
 
 const loginBoxStyles = {
@@ -12,9 +14,13 @@ const loginBoxStyles = {
   color: "#fff",
 };
 
-const inputStyles = {
-  color: "#fff",
-};
+const WhiteTextField = withStyles({
+  root: {
+    "& input.MuiInputBase-input": {
+      color: "#fff",
+    },
+  },
+})(TextField);
 
 const LoginPage = () => (
   <Container
@@ -25,7 +31,7 @@ const LoginPage = () => (
     padding="38px 36px 38px"
   >
     <div>Login</div>
-    <TextField id="standard-basic" label="Standard" css={inputStyles} />
+    <WhiteTextField id="standard-basic" label="Standard" />
   </Container>
 );
 
