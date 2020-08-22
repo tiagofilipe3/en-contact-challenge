@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
 import PropTypes from "prop-types";
-import colors from "../colors";
 import { MarginProps, margins } from "../dimensions/margins";
 import { dimensions, DimensionsProps } from "../dimensions/dimensions";
 import sizes from "./sizes";
+import { themes } from "../theme";
 
 export interface TextProps extends MarginProps, DimensionsProps {
   size?: string;
@@ -20,7 +20,8 @@ const StyledText = styled.div<TextProps>`
   ${margins}
   ${dimensions}
   font-size: ${({ size }) => (() => sizes[size] || sizes.s)()};
-  color: ${({ color }) => colors[color] || colors["primary-dark-text"]};
+  color: ${({ color }) =>
+    themes.lightTheme.colors[color] || themes.lightTheme.colors.primaryText};
   font-family: ${({ fontFamily }) => fontFamily || "Lato-Regular"};
   text-align: ${({ textAlign }) => textAlign && textAlign};
   text-transform: ${({ textTransform }) => textTransform && textTransform};
