@@ -17,18 +17,21 @@ const buttonStyles = makeStyles({
       "&:hover": {
         backgroundColor: "#E5E7DA",
       },
+      "&[disabled]": {
+        opacity: 0.6,
+      },
     };
   },
 });
 
 const CustomButton = (props: CustomButtonProps) => {
-  const { theme } = useContext(ThemeContext);
-  const { children, onClick, ...rest } = props;
+  const { theme }: any = useContext(ThemeContext);
+  const { children, onClick, type, ...rest } = props;
 
   const classes = buttonStyles({ theme });
 
   return (
-    <Button onClick={onClick} className={classes.root} {...rest}>
+    <Button {...rest} onClick={onClick} className={classes.root} type={type}>
       {children}
     </Button>
   );
@@ -37,11 +40,15 @@ const CustomButton = (props: CustomButtonProps) => {
 interface CustomButtonProps {
   onClick?: any;
   children?: React.ReactNode;
+  disabled?: boolean;
+  type?: "submit" | "reset" | "button";
 }
 
 CustomButton.defaultProps = {
   children: undefined,
   onClick: undefined,
+  disabled: false,
+  type: "button",
 };
 
 export default CustomButton;

@@ -2,12 +2,7 @@ import React, { useContext } from "react";
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { ThemeContext, ThemeProps } from "../theme";
-
-export interface TextFieldProps {
-  id?: string;
-  label?: string;
-  type?: string;
-}
+import TextFieldProps from "./TextFieldProps";
 
 const textFieldStyles = makeStyles({
   root: (props: ThemeProps) => {
@@ -39,12 +34,12 @@ const textFieldStyles = makeStyles({
   },
 });
 
-const CustomTextField = (props: TextFieldProps) => {
-  const { theme } = useContext(ThemeContext);
+const CustomTextField = (props: any) => {
+  const { theme }: any = useContext(ThemeContext);
 
   const classes = textFieldStyles({ theme });
 
-  return <TextField {...props} className={classes.root} />;
+  return <TextField className={classes.root} {...props} />;
 };
 
 export default CustomTextField;
