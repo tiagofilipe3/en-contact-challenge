@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { css } from "@emotion/core";
-
+import { createBrowserHistory } from "history";
 import "./App.css";
-import LoginPage from "../LoginPage";
+import { Switch, Router, Route } from "react-router-dom";
 import LoginBG from "../assets/images/bg-sign-up.jpg";
 import Container from "../Container";
-import { themes, ThemeContext } from "../theme";
+import themes from "../theme";
+import LoginPage from "../LoginPage";
+import MailPage from "../MailPage";
+import ThemeContext from "../themeContext";
 
 const containerStyles = css({
   background: `url(${LoginBG}) no-repeat 50% 50%/cover`,
@@ -19,6 +22,8 @@ const App = () => {
     setTheme(theme === "lightTheme" ? "darkTheme" : "lightTheme");
   };
 
+  const customHistory = createBrowserHistory();
+
   return (
     <ThemeContext.Provider value={{ theme: themes[theme], toggleTheme }}>
       <Container
@@ -26,7 +31,16 @@ const App = () => {
         alignItems="center"
         css={containerStyles}
       >
-        <LoginPage />
+        <Router history={customHistory}>
+          <Switch>
+            <Route exact path="/">
+              <LoginPage />
+            </Route>
+            <Route path="mail">
+              <MailPage />
+            </Route>
+          </Switch>
+        </Router>
       </Container>
     </ThemeContext.Provider>
   );

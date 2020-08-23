@@ -1,20 +1,11 @@
 import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
 import PropTypes from "prop-types";
-import { MarginProps, margins } from "../dimensions/margins";
-import { dimensions, DimensionsProps } from "../dimensions/dimensions";
+import margins from "../dimensions/margins";
+import dimensions from "../dimensions/dimensions";
 import sizes from "./sizes";
-import { themes } from "../theme";
-
-export interface TextProps extends MarginProps, DimensionsProps {
-  size?: string;
-  color?: string;
-  fontFamily?: string;
-  textAlign?: string;
-  textTransform?: string;
-  fontWeight?: string;
-  children?: React.ReactNode;
-}
+import themes from "../theme";
+import { TextProps } from "../types";
 
 const StyledText = styled.div<TextProps>`
   ${margins}

@@ -2,20 +2,10 @@ import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 
-import { MarginProps, margins } from "../dimensions/margins";
-import { DimensionsProps, dimensions } from "../dimensions/dimensions";
-import { PaddingsProps, paddings } from "../dimensions/paddings";
-
-interface ContainerProps extends MarginProps, PaddingsProps, DimensionsProps {
-  column?: boolean;
-  alignItems?: string;
-  justifyContent?: string;
-  background?: string;
-  flex?: string;
-  flexGrow?: string;
-  flexShrink?: string;
-  children?: React.ReactNode;
-}
+import { ContainerProps } from "../types";
+import margins from "../dimensions/margins";
+import dimensions from "../dimensions/dimensions";
+import paddings from "../dimensions/paddings";
 
 const StyledContainer = styled.div<ContainerProps>`
   ${margins}

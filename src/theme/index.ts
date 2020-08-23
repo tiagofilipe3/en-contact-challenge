@@ -1,18 +1,6 @@
-import { createContext } from "react";
 import LoginBGLight from "../assets/images/bg-sign-up.jpg";
 
-export interface ThemeProps {
-  theme: {
-    colors: {
-      primary: string;
-      secondary: string;
-      primaryText: string;
-      secondaryText: string;
-    };
-  };
-}
-
-const themes = {
+const themes: any = {
   lightTheme: {
     colors: {
       primary: "#005450",
@@ -32,6 +20,4 @@ const themes = {
   },
 };
 
-const ThemeContext = createContext(undefined);
-
-export { themes, ThemeContext };
+export default themes;

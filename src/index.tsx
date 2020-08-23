@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
+import ptBR from "./i18n/pt-BR";
 
 import App from "./App";
-import ptBR from "./i18n/pt-BR";
-import configureStore from "./store/configStore";
+import configureStore from "./config/configStore";
 
 const store = configureStore;
 

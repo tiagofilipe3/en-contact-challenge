@@ -1,4 +1,4 @@
-import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS } from "./types";
+import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS } from "./actions";
 
 export interface LoginProps {
   Login: {

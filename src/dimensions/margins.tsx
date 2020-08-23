@@ -1,6 +1,7 @@
 import { css } from "@emotion/core";
+import { MarginProps } from "../types";
 
-export const margins = ({
+const margins = ({
   marginLeft,
   marginTop,
   marginRight,
@@ -12,9 +13,4 @@ export const margins = ({
   margin-bottom: ${marginBottom && marginBottom};
 `;
 
-export interface MarginProps {
-  marginLeft?: string;
-  marginTop?: string;
-  marginRight?: string;
-  marginBottom?: string;
-}
+export default margins;

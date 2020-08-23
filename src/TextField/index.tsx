@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { ThemeContext, ThemeProps } from "../theme";
-import TextFieldProps from "./TextFieldProps";
 
 const textFieldStyles = makeStyles({
   root: (props: ThemeProps) => {

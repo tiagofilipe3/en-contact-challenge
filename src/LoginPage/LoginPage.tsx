@@ -5,20 +5,16 @@ import { Formik, Form } from "formik";
 import { CircularProgress } from "@material-ui/core";
 import { connect } from "react-redux";
 import * as Yup from "yup";
+import { useIntl, IntlShape, MessageDescriptor } from "react-intl";
 
 import Container from "../Container";
 import FormattedText from "../FormattedText";
 import CustomButton from "../Button";
-import { ThemeContext } from "../theme";
 import { login } from "./actions";
 import FormikTextField from "../FormikTextField";
 import fakeLogin from "../utils";
 import { LoginProps } from "./reducer";
-
-const LoginSchema = Yup.object().shape({
-  username: Yup.string().required("Campo obrigatório"),
-  password: Yup.string().required("Campo obrigatório"),
-});
+import ThemeContext from "../themeContext";
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) =>
   bindActionCreators({ login }, dispatch);
@@ -30,7 +26,17 @@ const mapStateToProps = ({ Login }: LoginProps) => ({
 });
 
 const LoginPage = () => {
+  const intl: IntlShape = useIntl();
   const { theme }: any = useContext(ThemeContext);
+
+  const formattedMessage: MessageDescriptor = {
+    id: "requiredField",
+  };
+
+  const LoginSchema = Yup.object().shape({
+    username: Yup.string().required(intl.formatMessage(formattedMessage)),
+    password: Yup.string().required(intl.formatMessage(formattedMessage)),
+  });
 
   const loginBoxStyles = css({
     backgroundColor: theme.colors.primary,

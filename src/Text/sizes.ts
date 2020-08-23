@@ -1,4 +1,4 @@
-const sizes = {
+const sizes: object = {
   xxl: "35px",
   xl: "30px",
   l: "20px",

@@ -1,6 +1,7 @@
 import { css } from "@emotion/core";
+import { PaddingsProps } from "../types";
 
-export const paddings = ({
+const paddings = ({
   paddingLeft,
   paddingTop,
   paddingRight,
@@ -14,10 +15,4 @@ export const paddings = ({
   padding-bottom: ${paddingBottom && paddingBottom};
 `;
 
-export interface PaddingsProps {
-  paddingLeft?: string;
-  paddingTop?: string;
-  paddingRight?: string;
-  paddingBottom?: string;
-  padding?: string;
-}
+export default paddings;

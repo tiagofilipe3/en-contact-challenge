@@ -1,7 +1,13 @@
-import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS } from "./types";
+import { Dispatch, AnyAction } from "redux";
 import fakeLogin from "../utils";
 
-export const login = (username, password) => (dispatch) => {
+export const LOGIN_START = "LOGIN_START";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
+
+export const login = (username: string, password: string) => (
+  dispatch: Dispatch<AnyAction>
+) => {
   dispatch({
     type: LOGIN_START,
   });
