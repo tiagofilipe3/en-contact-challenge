@@ -1,8 +1,3 @@
-declare module "*.png";
-declare module "*.jpg";
-declare module "*.json";
-declare module "*.svg";
-
 export interface ContainerProps
   extends MarginProps,
     PaddingsProps,
@@ -11,6 +6,7 @@ export interface ContainerProps
   alignItems?: string;
   justifyContent?: string;
   background?: string;
+  backgroundColor?: string;
   flex?: string;
   flexGrow?: string;
   flexShrink?: string;
@@ -47,4 +43,25 @@ export interface TextProps extends MarginProps, DimensionsProps {
   textTransform?: string;
   fontWeight?: string;
   children?: React.ReactNode;
+}
+
+export interface SizesProps {
+  xxl: string;
+  xl: string;
+  l: string;
+  s: string;
+  xs: string;
+  xxs: string;
+}
+
+export interface ThemeProps {
+  theme: {
+    colors: {
+      primary: string;
+      secondary: string;
+      primaryText: string;
+      secondaryText: string;
+    };
+    loginBg?: any;
+  };
 }

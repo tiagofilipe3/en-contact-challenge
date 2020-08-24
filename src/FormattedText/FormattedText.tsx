@@ -2,8 +2,7 @@ import React, { FunctionComponent } from "react";
 import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 import Text from "../Text";
-
-import { TextProps } from "../Text/Text";
+import { TextProps } from "../types";
 
 interface FormattedTextProps extends TextProps {
   textId: string;

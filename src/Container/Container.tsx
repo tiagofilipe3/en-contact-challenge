@@ -16,6 +16,8 @@ const StyledContainer = styled.div<ContainerProps>`
   align-items: ${({ alignItems }) => alignItems && alignItems};
   justify-content: ${({ justifyContent }) => justifyContent && justifyContent};
   background: ${({ background }) => background && background};
+  background-color: ${({ backgroundColor }) =>
+    backgroundColor && backgroundColor};
   flex: ${({ flex }) => flex && flex};
   flex-grow: ${({ flexGrow }) => flexGrow && flexGrow};
   flex-shrink: ${({ flexShrink }) => flexShrink && flexShrink};

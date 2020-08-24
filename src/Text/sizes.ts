@@ -1,4 +1,6 @@
-const sizes: object = {
+import { SizesProps } from "../types";
+
+const sizes: SizesProps = {
   xxl: "35px",
   xl: "30px",
   l: "20px",

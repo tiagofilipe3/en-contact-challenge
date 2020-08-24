@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { css } from "@emotion/core";
 import { compose, bindActionCreators, Dispatch, AnyAction } from "redux";
 import { Formik, Form } from "formik";
-import { CircularProgress } from "@material-ui/core";
 import { connect } from "react-redux";
 import * as Yup from "yup";
 import { useIntl, IntlShape, MessageDescriptor } from "react-intl";
 
+import { useHistory } from "react-router-dom";
 import Container from "../Container";
 import FormattedText from "../FormattedText";
 import CustomButton from "../Button";
@@ -15,6 +15,8 @@ import FormikTextField from "../FormikTextField";
 import fakeLogin from "../utils";
 import { LoginProps } from "./reducer";
 import ThemeContext from "../themeContext";
+import CircularLoading from "../CircularLoading";
+import LoginBG from "../assets/images/bg-sign-up.jpg";
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) =>
   bindActionCreators({ login }, dispatch);
@@ -28,6 +30,7 @@ const mapStateToProps = ({ Login }: LoginProps) => ({
 const LoginPage = () => {
   const intl: IntlShape = useIntl();
   const { theme }: any = useContext(ThemeContext);
+  const history = useHistory();
 
   const formattedMessage: MessageDescriptor = {
     id: "requiredField",
@@ -48,87 +51,99 @@ const LoginPage = () => {
     color: "#fff",
   });
 
+  const containerStyles = css({
+    background: `url(${LoginBG}) no-repeat 50% 50%/cover`,
+  });
+
   return (
     <Container
-      column
-      wd="432px"
-      css={loginBoxStyles}
+      css={containerStyles}
+      wd="100%"
+      ht="100%"
+      justifyContent="center"
       alignItems="center"
-      padding="38px 0 38px"
     >
-      <Container>
-        <FormattedText
-          textId="enContact"
-          color="secondary"
-          fontFamily="Lato-Regular"
-        />
-      </Container>
-      <Formik
-        enableReinitialize
-        initialValues={{
-          username: "",
-          password: "",
-        }}
-        validateOnBlur={false}
-        validateOnChange={false}
-        validationSchema={LoginSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(true);
-          try {
-            fakeLogin(values.username, values.password).then(() => {
-              setSubmitting(false);
-            });
-          } catch (e) {
-            setSubmitting(false);
-          }
-        }}
+      <Container
+        column
+        wd="432px"
+        css={loginBoxStyles}
+        alignItems="center"
+        padding="38px 0 38px"
       >
-        {({ isSubmitting }) => (
-          <>
-            <Form>
-              <Container marginTop="20px">
-                <FormikTextField
-                  id="standard-basic"
-                  label="Username"
-                  formikKey="username"
-                />
-              </Container>
-              <Container marginTop="20px">
-                <FormikTextField
-                  id="standard-basic"
-                  label="Password"
-                  type="password"
-                  formikKey="password"
-                />
-              </Container>
-              <Container marginTop="50px" justifyContent="center">
-                <CustomButton type="submit" disabled={isSubmitting}>
-                  <FormattedText
-                    color="primary"
-                    fontFamily="Lato-Regular"
-                    size="xs"
-                    fontWeight="bold"
-                    textId="login"
+        <Container>
+          <FormattedText
+            textId="enContact"
+            color="secondary"
+            fontFamily="Lato-Regular"
+          />
+        </Container>
+        <Formik
+          enableReinitialize
+          initialValues={{
+            username: "",
+            password: "",
+          }}
+          validateOnBlur={false}
+          validateOnChange={false}
+          validationSchema={LoginSchema}
+          onSubmit={({ username, password }, { setSubmitting }) => {
+            setSubmitting(true);
+            try {
+              fakeLogin(username, password).then(() => {
+                setSubmitting(false);
+                history.push("/mail");
+              });
+            } catch (e) {
+              setSubmitting(false);
+            }
+          }}
+        >
+          {({ isSubmitting }) => (
+            <>
+              <Form>
+                <Container marginTop="20px">
+                  <FormikTextField
+                    id="standard-basic"
+                    label="Username"
+                    formikKey="username"
                   />
-                  {isSubmitting && (
-                    <Container css={css({ position: "relative" })}>
-                      <CircularProgress
-                        size={20}
-                        css={css({
-                          position: "absolute",
-                          left: "8px",
-                          top: "-9px",
-                        })}
-                        color={theme.colors.primary}
-                      />
-                    </Container>
-                  )}
-                </CustomButton>
-              </Container>
-            </Form>
-          </>
-        )}
-      </Formik>
+                </Container>
+                <Container marginTop="20px">
+                  <FormikTextField
+                    id="standard-basic"
+                    label="Password"
+                    type="password"
+                    formikKey="password"
+                  />
+                </Container>
+                <Container marginTop="50px" justifyContent="center">
+                  <CustomButton type="submit" disabled={isSubmitting}>
+                    <FormattedText
+                      color="primary"
+                      fontFamily="Lato-Regular"
+                      size="xs"
+                      fontWeight="bold"
+                      textId="login"
+                    />
+                    {isSubmitting && (
+                      <Container css={css({ position: "relative" })}>
+                        <CircularLoading
+                          size={20}
+                          style={{
+                            position: "absolute",
+                            left: "8px",
+                            top: "-9px",
+                          }}
+                        />
+                      </Container>
+                    )}
+                  </CustomButton>
+                </Container>
+              </Form>
+            </>
+          )}
+        </Formik>
+      </Container>
     </Container>
   );
 };

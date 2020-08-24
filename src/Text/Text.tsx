@@ -1,18 +1,18 @@
 import styled from "@emotion/styled";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useContext } from "react";
 import PropTypes from "prop-types";
 import margins from "../dimensions/margins";
 import dimensions from "../dimensions/dimensions";
 import sizes from "./sizes";
-import themes from "../theme";
+import ThemeContext from "../themeContext";
 import { TextProps } from "../types";
 
 const StyledText = styled.div<TextProps>`
   ${margins}
   ${dimensions}
-  font-size: ${({ size }) => (() => sizes[size] || sizes.s)()};
-  color: ${({ color }) =>
-    themes.lightTheme.colors[color] || themes.lightTheme.colors.primaryText};
+  font-size: ${({ size }: TextProps) => (() => sizes[size] || sizes.s)()};
+  color: ${({ color, theme }: any) =>
+    theme.colors[color] || theme.colors.primaryText};
   font-family: ${({ fontFamily }) => fontFamily || "Lato-Regular"};
   text-align: ${({ textAlign }) => textAlign && textAlign};
   text-transform: ${({ textTransform }) => textTransform && textTransform};
@@ -20,7 +20,13 @@ const StyledText = styled.div<TextProps>`
 `;
 
 const Text: FunctionComponent<TextProps> = ({ children, ...rest }) => {
-  return <StyledText {...rest}>{children}</StyledText>;
+  const { theme }: any = useContext(ThemeContext);
+
+  return (
+    <StyledText theme={theme} {...rest}>
+      {children}
+    </StyledText>
+  );
 };
 
 Text.propTypes = {

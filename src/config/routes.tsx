@@ -1,6 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 import MailPage from "../MailPage";
 
-export default <></>;
+export default (
+  <>
+    <Route exact path="/">
+      <LoginPage />
+    </Route>
+    <Route path="/mail">
+      <MailPage />
+    </Route>
+  </>
+);

@@ -1,4 +1,4 @@
-const fakeLogin = (username, password) => {
+const fakeLogin = (username: string, password: string) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (username === "admin" && password === "admin") {
